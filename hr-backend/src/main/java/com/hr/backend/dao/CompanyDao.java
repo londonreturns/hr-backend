@@ -7,11 +7,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CompanyDao extends JpaRepository<CompanyDB, String> {
 
-    @Query(" SELECT new com.hr.backend.dto.CompanyDTO(c.id, c.name, c.domain, c.about, c.imgUrl, c.thumbnailUrl, c.facebookUrl) FROM CompanyDB c ")
+    @Query(" SELECT new com.hr.backend.dto.CompanyDTO(c.id, c.name, c.domain, c.about, c.imgUrl, c.thumbnailUrl, c.facebookUrl) " +
+            " FROM CompanyDB c WHERE c.id = :companyId ")
+    Optional<CompanyDTO> getCompanyDTOById(String companyId);
+
+    @Query(" SELECT new com.hr.backend.dto.CompanyDTO(c.id, c.name, c.domain, c.about, c.imgUrl, c.thumbnailUrl, c.facebookUrl) " +
+            " FROM CompanyDB c ")
     List<CompanyDTO> getAllCompanies();
 
 }
