@@ -18,4 +18,8 @@ public interface CompanyService {
     CompanyDB getCompanyById(String companyId);
 
     void softDeleteCompanyById(String companyId);
+
+    void activate(String companyId);
+
+    void inactivate(String companyId);
 }

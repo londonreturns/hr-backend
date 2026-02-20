@@ -49,4 +49,15 @@ public class CompanyController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PostMapping("/activate/{companyId}")
+    public ResponseEntity<?> activateCompanyById(@PathVariable String companyId){
+        companyService.activate(companyId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/inactivate/{companyId}")
+    public ResponseEntity<?> inactivateCompanyById(@PathVariable String companyId){
+        companyService.inactivate(companyId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

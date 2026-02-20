@@ -64,6 +64,22 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public void activate(String companyId) {
+        CompanyDB companyDB = getCompanyById(companyId);
+
+        companyDB.setStatus(Status.ACTIVE);
+        companyDao.save(companyDB);
+    }
+
+    @Override
+    public void inactivate(String companyId) {
+        CompanyDB companyDB = getCompanyById(companyId);
+
+        companyDB.setStatus(Status.INACTIVE);
+        companyDao.save(companyDB);
+    }
+
+    @Override
     public CompanyDTO getCompanyDTOById(String companyId){
         return companyDao.getCompanyDTOById(companyId)
                 .orElseThrow(() -> new BadRequestException(MyConstants
