@@ -17,4 +17,5 @@ public interface CompanyService {
 
     CompanyDB getCompanyById(String companyId);
 
+    void softDeleteCompanyById(String companyId);
 }

@@ -43,4 +43,10 @@ public class CompanyController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping("/soft/{companyId}")
+    public ResponseEntity<?> softDeleteCompanyById(@PathVariable String companyId){
+        companyService.softDeleteCompanyById(companyId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.hr.backend.model;
 
+import com.hr.backend.enums.Status;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -12,8 +13,15 @@ import lombok.Setter;
 @Setter
 public class CompanyDB extends BaseDB{
 
+    public CompanyDB() {
+        this.status = Status.ACTIVE;
+    }
+
     @Column(name="name", nullable=false)
     private String name;
+
+    @Column(name="status", nullable = false)
+    private Status status;
 
     @Column(name="domain", unique = true, nullable=false)
     private String domain;

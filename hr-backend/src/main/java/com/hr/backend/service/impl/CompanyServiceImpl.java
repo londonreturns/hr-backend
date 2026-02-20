@@ -2,6 +2,7 @@ package com.hr.backend.service.impl;
 
 import com.hr.backend.dao.CompanyDao;
 import com.hr.backend.dto.CompanyDTO;
+import com.hr.backend.enums.Status;
 import com.hr.backend.exceptions.BadRequestException;
 import com.hr.backend.model.CompanyDB;
 import com.hr.backend.service.CompanyService;
@@ -52,6 +53,14 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void deleteCompanyById(String companyId){
         companyDao.delete(getCompanyById(companyId));
+    }
+
+    @Override
+    public void softDeleteCompanyById(String companyId) {
+        CompanyDB companyDB = getCompanyById(companyId);
+
+        companyDB.setStatus(Status.DELETED);
+        companyDao.save(companyDB);
     }
 
     @Override
