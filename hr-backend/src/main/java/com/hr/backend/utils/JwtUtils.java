@@ -1,6 +1,6 @@
 package com.hr.backend.utils;
 
-import com.hr.backend.enums.RoleType;
+import com.hr.backend.enums.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -25,7 +25,7 @@ public class JwtUtils {
       return Keys.hmacShaKeyFor(secret.getBytes());
   }
 
-    public String generateToken(String email, RoleType role, Long userId) {
+    public String generateToken(String email, Role role, Long userId) {
         return Jwts.builder()
                 .setSubject(email)
                 .claim("role", role)
