@@ -13,11 +13,11 @@ public interface CompanyService {
 
     List<CompanyDTO> getAllCompanies();
 
-    void deleteCompanyById(String companyId);
-
     CompanyDB getCompanyById(String companyId);
 
     void softDeleteCompanyById(String companyId);
+
+    void hardDeleteCompanyById(String companyId);
 
     void activate(String companyId);
 
