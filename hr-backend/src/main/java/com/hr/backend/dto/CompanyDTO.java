@@ -1,6 +1,5 @@
 package com.hr.backend.dto;
 
-import jakarta.persistence.Column;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

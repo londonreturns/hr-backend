@@ -39,7 +39,7 @@ public class CompanyController {
 
     @DeleteMapping("/{companyId}")
     public ResponseEntity<?> deleteCompanyById(@PathVariable String companyId){
-        companyService.deleteCompanyById(companyId);
+        companyService.hardDeleteCompanyById(companyId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

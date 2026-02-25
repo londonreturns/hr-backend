@@ -51,16 +51,16 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void deleteCompanyById(String companyId){
-        companyDao.delete(getCompanyById(companyId));
-    }
-
-    @Override
     public void softDeleteCompanyById(String companyId) {
         CompanyDB companyDB = getCompanyById(companyId);
 
         companyDB.setStatus(Status.DELETED);
         companyDao.save(companyDB);
+    }
+
+    @Override
+    public void hardDeleteCompanyById(String companyId){
+        companyDao.delete(getCompanyById(companyId));
     }
 
     @Override

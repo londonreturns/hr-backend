@@ -17,7 +17,8 @@ public interface CompanyDao extends JpaRepository<CompanyDB, String> {
     Optional<CompanyDTO> getCompanyDTOById(String companyId);
 
     @Query(" SELECT new com.hr.backend.dto.CompanyDTO(c.id, c.name, c.domain, c.about, c.imgUrl, c.thumbnailUrl, c.facebookUrl) " +
-            " FROM CompanyDB c ")
+            " FROM CompanyDB c " +
+            " WHERE c.status = 'ACTIVE' ")  // enum to string
     List<CompanyDTO> getAllCompanies();
 
 }
